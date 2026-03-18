@@ -26,9 +26,9 @@ const blogPosts = [
     date: "2026-01-28",
     readTime: "6 min",
     url: "blog/porque-fazer-terapia.html",
-    image: null,
+    image: "assets/images/A2.png",
   },
-  {
+  /*{
     id: 3,
     title:
       "Autoestima: como desenvolver uma relação mais saudável consigo mesmo",
@@ -68,7 +68,7 @@ const blogPosts = [
     readTime: "8 min",
     url: "#",
     image: null,
-  },
+  },*/
 ];
 
 // ==========================================
