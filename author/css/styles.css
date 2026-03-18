@@ -326,6 +326,10 @@ p {
   background-color: var(--primary-dark);
 }
 
+/* Remove a barrinha de página ativa SOMENTE do botão de contato */
+.nav-menu a.btn-nav.active::after {
+  display: none;
+}
 /* Menu mobile */
 .menu-toggle {
   display: none;
