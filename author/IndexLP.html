@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psicologia Clínica | Agende sua Sessão</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Paleta de Cores e Variáveis */
+        :root {
+            --primary-color: #5d8a7c; 
+            --primary-dark: #456b5f;
+            --primary-light: #e8f0ed;
+            --bg-color: #faf9f6; 
+            --text-dark: #333333;
+            --text-light: #555555;
+            --whatsapp: #25d366;
+            --whatsapp-dark: #1ea952;
+            --white: #ffffff;
+        }
+
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+            color: var(--primary-dark);
+        }
+
+        a { text-decoration: none; }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Botões */
+        .btn-wpp {
+            display: inline-block;
+            background-color: var(--whatsapp);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-wpp:hover {
+            background-color: var(--whatsapp-dark);
+            transform: translateY(-2px);
+            color: var(--white);
+        }
+
+        /* WhatsApp Flutuante */
+        .float-wpp {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--whatsapp);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .float-wpp:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 100px 0;
+            text-align: center;
+            background: linear-gradient(rgba(250, 249, 246, 0.9), rgba(250, 249, 246, 0.9)), url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Identificação */
+        .identification {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+        }
+
+        .check-list {
+            list-style: none;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .check-list li {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            background: var(--primary-light);
+            padding: 15px 20px;
+            border-radius: 10px;
+        }
+
+        .check-list li i {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 1.4rem;
+            margin-top: 3px;
+        }
+
+        /* Especialidades (Nova Seção) */
+        .specialties {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Sobre o Profissional */
+        .about {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-text {
+            flex: 1.2;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Como Funciona */
+        .how-it-works {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .step-box {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .step-box i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* FAQ (Nova Seção) */
+        .faq-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background-color: #fff;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: var(--primary-light);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            background-color: #fff;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-light);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 200px; /* Altura suficiente para o texto */
+            border-top: 1px solid #eee;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: var(--primary-color);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .about-content { flex-direction: column; }
+            .steps-container { flex-direction: column; }
+            .btn-wpp { width: 100%; text-align: center; }
+            .float-wpp { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/5534996791002?text=Olá,%20acessei%20o%20site%20e%20gostaria%20de%20informações." target="_blank" class="float-wpp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+        <section class="hero">
+        <div class="container">
+            <h1>Você não precisa lidar com tudo isso sozinho(a).</h1>
+            <p>Dê o primeiro passo para o seu bem-estar emocional. Terapia focada em te ajudar a lidar com a ansiedade, estresse e reencontrar o equilíbrio.</p>
+            <a href="https://wa.me/5534996791002?text=Olá,%20gostaria%20de%20agendar%20minha%20primeira%20sessão." target="_blank" class="btn-wpp">
+                <i class="fa-brands fa-whatsapp"></i> Agendar Minha Primeira Sessão
+            </a>
+        </div>
+    </section>
+	
+	<section class="about">
+        <div class="container about-content">
+            <div class="about-img">
+                <img src="Images/Me4.jpg" alt="Foto do Psicólogo">
+            </div>
+            <div class="about-text">
+                <h2>Quem vai te acompanhar nessa jornada?</h2>
+                <p>Olá, sou o <strong>Gustavo Lucas</strong>, Psicólogo Clínico (CRP 04/74143). Sou especialista em Terapia Cognitivo-Comportamental e dedico minha carreira a ajudar pessoas a ressignificarem suas histórias.</p>
+                <p>Acredito que a terapia não é apenas para tratar adoecimentos, mas um espaço valioso para o crescimento pessoal. Meu objetivo é oferecer uma escuta acolhedora, totalmente ética e livre de julgamentos, para construirmos juntos um caminho de qualidade de vida.</p>
+                <br>
+                <a href="https://wa.me/5534996791002?text=Olá,%20gostaria%20de%20falar%20com%20o%20psicólogo." target="_blank" class="btn-wpp">
+                    <i class="fa-brands fa-whatsapp"></i> Falar com o Psicólogo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="identification">
+        <div class="container">
+            <h2 class="section-title">A terapia é o espaço seguro para você que...</h2>
+            <ul class="check-list">
+                <li><i class="fa-solid fa-circle-check"></i> Sente que a ansiedade, os medos ou a preocupação excessiva estão travando a sua rotina diária.</li>
+                <li><i class="fa-solid fa-circle-check"></i> Está passando por uma fase difícil no relacionamento, término ou conflitos familiares.</li>
+                <li><i class="fa-solid fa-circle-check"></i> Sente um cansaço mental constante, esgotamento profissional (Burnout) e falta de motivação.</li>
+                <li><i class="fa-solid fa-circle-check"></i> Deseja se conhecer melhor, resgatar sua autoestima e tomar decisões com mais clareza.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="specialties">
+        <div class="container">
+            <h2 class="section-title">Como posso te ajudar</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fa-solid fa-cloud-bolt"></i>
+                    <h3>Ansiedade e Estresse</h3>
+                    <p>Aprenda ferramentas para lidar com crises, pensamentos acelerados e recupere sua tranquilidade.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-heart-crack"></i>
+                    <h3>Relacionamentos</h3>
+                    <p>Superação de términos, dependência emocional e melhora na comunicação conjugal e familiar.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-seedling"></i>
+                    <h3>Autoconhecimento</h3>
+                    <p>Desenvolvimento pessoal, melhora da autoestima e transição de carreira.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Como dar o primeiro passo?</h2>
+            <div class="steps-container">
+                <div class="step-box">
+                    <i class="fa-regular fa-comments"></i>
+                    <h3>1. Contato Inicial</h3>
+                    <p>Clique no botão do WhatsApp e me mande uma mensagem para conversarmos e tirarmos dúvidas.</p>
+                </div>
+                <div class="step-box">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <h3>2. Agendamento</h3>
+                    <p>Encontraremos juntos o melhor dia e horário disponível que se encaixe na sua rotina.</p>
+                </div>
+                <div class="step-box">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <h3>3. A Sessão</h3>
+                    <p>Nosso encontro (online ou presencial) será um ambiente seguro, focado em você.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Dúvidas Frequentes</h2>
+            <div class="faq-container">
+                
+                <div class="faq-item">
+                    <button class="faq-question">A terapia online funciona mesmo? <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Sim! A modalidade online tem a mesma eficácia e rigor ético da presencial, comprovada cientificamente. A grande vantagem é que você pode fazer a sessão no conforto e privacidade da sua casa, economizando tempo de deslocamento.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Quanto tempo dura cada sessão? <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>As sessões individuais têm duração média de 50 minutos e, geralmente, ocorrem uma vez por semana. A frequência pode ser ajustada de acordo com a sua necessidade ao longo do processo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Você aceita plano de saúde / convênio? <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Meus atendimentos são particulares, mas emito recibos ou notas fiscais para que você possa solicitar o <strong>reembolso</strong> junto ao seu plano de saúde. Verifique com a sua operadora as regras para reembolso de psicoterapia.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">O que eu preciso para a terapia online? <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Apenas um celular, tablet ou computador com boa conexão de internet, câmera e microfone. É fundamental estar em um ambiente silencioso e privativo no momento da sessão para que você se sinta à vontade para falar.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>Gustavo Lucas</strong> - Psicólogo Clínico</p>
+            <p>CRP: 04/74143</p>
+            <p>Atendimento Online para todo o Brasil | Consultório em Patos de Minas, Minas Gerais</p>
+            <p style="margin-top: 15px; font-size: 0.8rem; color: #ccc;">
+                *Este site não faz promessas de cura. O processo psicoterapêutico é individual e exige o engajamento do paciente. Em caso de crise ou risco à vida, ligue para o CVV (188) ou procure o pronto-socorro mais próximo.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                
+                // Fecha as outras perguntas se quiser que apenas uma fique aberta
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if(item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Abre ou fecha a pergunta clicada
+                faqItem.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
